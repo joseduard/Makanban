@@ -1,7 +1,7 @@
 LISTE: _nom, position
 :
-TAG: _nom, couleur
+LABEL: _nom, couleur
 
 APPARTIENT, 11 CARTE, 0N LISTE
 CARTE: _description, couleur, position
-AVOIR, 0N TAG, 0N CARTE
+AVOIR, 0N LABEL, 0N CARTE
