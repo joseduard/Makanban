@@ -3,12 +3,12 @@ const listController = require("./controllers/listController");
 const router = express.Router();
 
 router.get("/", (req, res) => {
-  res.send("Server in running");
+  res.send("Server is running");
 });
 //Recuperer toutes les listes
 router.get("/lists", listController.getAllLists);
 // Recuperer UNE liste (:id c'est un parametre url )
-router.get("/lists/:id,", listController.getOneList);
+router.get('/lists/:id', listController.getOneList);
 // Créer une liste
 router.post("/lists", listController.createList);
 // Modifier une liste

@@ -1,0 +1,13 @@
+### récupération de toutes les listes
+GET http://localhost:5050/lists/
+Content-Type: application/json;
+
+### récupération d'une liste
+GET http://localhost:5050/lists/1
+
+### création d'une liste
+POST http://localhost:3000/lists
+Content-Type: application/x-www-form-urlencoded
+
+name=liste de test
+&position=2

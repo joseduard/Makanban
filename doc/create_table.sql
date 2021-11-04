@@ -55,6 +55,7 @@ VALUES ('A faire');
 INSERT INTO "card" ("title", "color", "list_id")
 VALUES  ('Sortir le chien', '#fff696', 1),
         ('Jeter la poubelle', '#c1e7ff', 1);
+        
 
 INSERT INTO "label" ("name", "color")
 VALUES ('Urgent', '#F00');

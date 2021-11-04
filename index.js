@@ -5,7 +5,7 @@ const express = require('express');
 // on charge nore router
 const router = require('./app/router');
 // on definit un port
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 5050;
 const app = express();
 // on charge le middleware pour gérer le body du POST
 app.use(express.urlencoded({extended: true}));

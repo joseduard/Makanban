@@ -1,5 +1,5 @@
 const { List } = require("../models/index");
-const { Op } = require('sequelize');
+const { Op } = require("sequelize");
 const listController = {
   // on va recuperer toutes les lists avec await, donc on doit etre dans une function async. Le contreleur ont parler au sequelize, on recupere les lists via sequelize
   getAllLists: async (req, res) => {
@@ -25,39 +25,43 @@ const listController = {
     } catch (error) {
       console.log(error);
       // code 500 erreur en server
-      res.status(500).json({ error: `Server error, al carajo` });
-    }
-  },
-  getOneList: async (req, res) => {
-    try {
-      // Je recupere mon id avec req.params.id car dans ma route le /:id c'est un parametre de URL
-      const listId = req.params.id;
-      const list = await List.findByPk(listId, {
-        include: {
-          //all:true Ici il va recuperer toutes les association de premier niveau
-          associaton: "cards",
-          //nested:true Ici il va recuperer toutes les asociation de deuxieme niveau
-          include: "labels",
-        },
-        order: [["cards", "position", "ASC"]],
-      });
-
-      // on va faire le "test" pour savoir si list exist sino on envoi un erreur 404
-      if (list) {
-        // je renvoie le resultat, en JSON
-        res.json(list);
-      } else {
-        res.status(404).json("Cannot find list with id " + listId);
-      }
-
-      // je renvoie le resultat, en JSON
-      res.json(list);
-    } catch (error) {
-      console.log(error);
-      // code 500 erreur en server
       res.status(500).json(error.toString());
     }
   },
+  
+  //all:true Ici il va recuperer toutes les association de premier niveau
+  //nested:true Ici il va recuperer toutes les asociation de deuxieme niveau
+  // on va faire le "test" pour savoir si list exist sino on envoi un erreur 404
+  getOneList: async (req, res) => {
+    try {
+      // Je recupere mon id avec req.params.id car dans ma route le /:id c'est un parametre de URL
+        const listId = req.params.id;
+
+        const list = await List.findByPk(listId, {
+            include: {
+                // all : récupérer toutes les associations
+                // de premier niveau
+                // ici on en a une seule : cards
+                all: true,
+                // nested : récupère toutes les sous-associations
+                // tout ce qui est en dessous quoi...
+                // en dautres termes -> en cascade
+                nested: true,
+            },
+            order: [
+                ['cards', 'position', 'ASC']
+            ]
+        });
+        if (list) {
+            res.json(list);
+        } else {
+            res.status(404).json('Cannot find list with id ' + listId);
+        }
+    } catch (error) {
+        console.log(error);
+        res.status(500).json(error.toString());
+    }
+},
   createList: async (req, res) => {
     try {
       // Pour creer ma liste je besoin de recuperer les proprietes name et position avec req.body;
