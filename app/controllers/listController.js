@@ -1,4 +1,5 @@
-const { List } = require("../models");
+const { List } = require("../models/index");
+const { Op } = require('sequelize');
 const listController = {
   // on va recuperer toutes les lists avec await, donc on doit etre dans une function async. Le contreleur ont parler au sequelize, on recupere les lists via sequelize
   getAllLists: async (req, res) => {
@@ -24,7 +25,7 @@ const listController = {
     } catch (error) {
       console.log(error);
       // code 500 erreur en server
-      res.status(500).json({ error: `Server error, please contact an administrator` });
+      res.status(500).json({ error: `Server error, al carajo` });
     }
   },
   getOneList: async (req, res) => {

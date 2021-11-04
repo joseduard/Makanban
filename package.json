@@ -1,0 +1,31 @@
+{
+  "name": "makanban",
+  "version": "1.0.0",
+  "description": "Makanban is a kanban agile method ... Makanban !!! Programming interface designed to send data in the form of JSON that will be interpreted and used in a front-end application. Useful API to organize projects, tasks, and much more in a fluid and efficient way.",
+  "main": "index.js",
+  "directories": {
+    "doc": "doc"
+  },
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "pg": "^8.7.1",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.9.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joseduard/Makanban.git"
+  },
+  "keywords": [],
+  "author": "eduardoPerez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/joseduard/Makanban/issues"
+  },
+  "homepage": "https://github.com/joseduard/Makanban#readme"
+}
