@@ -7,9 +7,14 @@ const sequelize = require('../db');
 class List extends Model { };
 
 // On va initialiser notre Model List qui prend deux parametre, le premier c'est les attributs (une object qui contient des attributs) et le deuxieme c'est les options
+//Description des propriétés du model
+// On peut fourni soir un string avec le type de champ, soit un objet afin de définir plus de détail sur la propriété.
 List.init({
-    name: DataTypes.TEXT,
-    position:DataTypes.INTEGER,
+    name: {
+        type: DataTypes.TEXT,
+        allowNull: false
+    },
+    position: DataTypes.INTEGER
 }, {
     // sequelize:sequelize =
     sequelize,
