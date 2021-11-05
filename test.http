@@ -11,3 +11,6 @@ Content-Type: application/x-www-form-urlencoded
 
 name=liste de test
 &position=2
+
+### delete d'un label
+DELETE  http://localhost:5050/label/1

@@ -1,6 +1,5 @@
 const { List, Card } = require("../models/index");
 
-
 const cardController = {
   // async car on utlise sequelize
   getCardsInList: async (req, res) => {
@@ -70,7 +69,7 @@ const cardController = {
         // ici ona va creer notre card
         // build = crée notre entite (card) non sauvegardée
         // pas besoin de await car on n'a pas encore parlé à SQL
-        let newCard = Card.build({title, list_id});
+        let newCard = Card.build({ title, list_id });
 
         // Si la color est present dans le body, je vais la "set"
         if (color) {
@@ -123,7 +122,7 @@ const cardController = {
       // je save la card
       await card.save();
       // je envoi le resutat
-      res.json(card)
+      res.json(card);
     } catch (error) {
       console.log(error);
       res.status(500).json(error);

@@ -28,40 +28,38 @@ const listController = {
       res.status(500).json(error.toString());
     }
   },
-  
+
   //all:true Ici il va recuperer toutes les association de premier niveau
   //nested:true Ici il va recuperer toutes les asociation de deuxieme niveau
   // on va faire le "test" pour savoir si list exist sino on envoi un erreur 404
   getOneList: async (req, res) => {
     try {
       // Je recupere mon id avec req.params.id car dans ma route le /:id c'est un parametre de URL
-        const listId = req.params.id;
+      const listId = req.params.id;
 
-        const list = await List.findByPk(listId, {
-            include: {
-                // all : récupérer toutes les associations
-                // de premier niveau
-                // ici on en a une seule : cards
-                all: true,
-                // nested : récupère toutes les sous-associations
-                // tout ce qui est en dessous quoi...
-                // en dautres termes -> en cascade
-                nested: true,
-            },
-            order: [
-                ['cards', 'position', 'ASC']
-            ]
-        });
-        if (list) {
-            res.json(list);
-        } else {
-            res.status(404).json('Cannot find list with id ' + listId);
-        }
+      const list = await List.findByPk(listId, {
+        include: {
+          // all : récupérer toutes les associations
+          // de premier niveau
+          // ici on en a une seule : cards
+          all: true,
+          // nested : récupère toutes les sous-associations
+          // tout ce qui est en dessous quoi...
+          // en dautres termes -> en cascade
+          nested: true,
+        },
+        order: [["cards", "position", "ASC"]],
+      });
+      if (list) {
+        res.json(list);
+      } else {
+        res.status(404).json("Cannot find list with id " + listId);
+      }
     } catch (error) {
-        console.log(error);
-        res.status(500).json(error.toString());
+      console.log(error);
+      res.status(500).json(error.toString());
     }
-},
+  },
   createList: async (req, res) => {
     try {
       // Pour creer ma liste je besoin de recuperer les proprietes name et position avec req.body;
