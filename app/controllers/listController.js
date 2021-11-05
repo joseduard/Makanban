@@ -141,7 +141,7 @@ const listController = {
 
     // et je renvoie le tout.
   },
-  DeleteList: async (req, res) => {
+  deleteList: async (req, res) => {
     try {
       const list = await List.destroy({
         where: {

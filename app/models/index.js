@@ -40,4 +40,4 @@ Card.belongsTo(List, {
 });
 
 // on exporte tous nos models
-module.exports = {Card, List, Label};
+module.exports = { Card, List, Label };
