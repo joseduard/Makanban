@@ -1,4 +1,4 @@
-// On recupere le DataTypes qui von me permetre de definir le type de chaque champ et la classe Model qui va me permettre de etend a classe Model est on require sequelize
+// On recupere le DataTypes qui von me permetre de definir le type de chaque champ et la classe Model qui va me permettre de etend la classe Model sequelize est on require sequelize
 const { DataTypes, Model } = require("sequelize");
 
 // On recupere notre instance sequelize, apres je fais la connexion au fichier db (dataBase)

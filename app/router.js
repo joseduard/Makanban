@@ -1,14 +1,14 @@
 const express = require("express");
-const { modifyList } = require('./controllers/listController');
+const { updateList } = require("./controllers/listController");
 const listController = require("./controllers/listController");
 const cardController = require("./controllers/cardController");
 const labelController = require("./controllers/labelController");
 
 const router = express.Router();
-
 router.get("/", (req, res) => {
   res.send("Server is running");
 });
+
 //Recuperer toutes les listes
 router.get("/lists", listController.getAllLists);
 // Recuepere les cards d'une liste
@@ -22,7 +22,7 @@ router.get("/labels/id", labelController.getOneLabel);
 router.post("/lists", listController.createList);
 router.post("/cards", cardController.createCard);
 router.post("/labels", labelController.createLabel);
-// Modifier u
+// Modifier 
 router.patch("/lists/:id", listController.updateList);
 router.patch("/cards/:id", cardController.updateCard);
 router.patch("/labels/id", labelController.updateLabel);
